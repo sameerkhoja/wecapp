@@ -50,11 +50,13 @@ await page.screenshot({ path: "docs/booking-pass.png", fullPage: true });
 await page
   .getByRole("button", { name: "Cancel reservation", exact: true })
   .click();
-await page
-  .getByRole("button", { name: "Confirm cancellation", exact: true })
-  .click();
-await page.getByText("REFUNDED", { exact: true }).first().waitFor();
-await page.waitForTimeout(500);
+const [cancelResponse] = await Promise.all([
+  page.waitForResponse(response => response.url().includes('/cancel') && response.request().method() === 'POST'),
+  page.getByRole("button", { name: "Confirm cancellation", exact: true }).click(),
+]);
+assert.equal(cancelResponse.status(), 200);
+assert.equal((await cancelResponse.json()).status, 'refunded');
+await page.getByRole("button", { name: "Confirm cancellation", exact: true }).waitFor({state:'detached'});
 await page.getByRole("button", { name: "Close dialog" }).last().click();
 await page.getByRole("button", { name: "Alex ↗" }).click();
 await page.getByRole("button", { name: "Switch demo role" }).click();
