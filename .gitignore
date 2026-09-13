@@ -1,0 +1,17 @@
+node_modules/
+dist/
+dist-native/
+.expo/
+.env
+.env.local
+data/
+playwright-report/
+test-results/
+
+work/
+.vercel
+.env*
+
+.vercel/
+.env.*
+!.env.example

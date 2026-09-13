@@ -1,0 +1,31 @@
+{
+  "expo": {
+    "name": "Wecapp",
+    "slug": "wecapp",
+    "scheme": "wecapp",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.wecapp.mobile"
+    },
+    "android": {
+      "package": "com.wecapp.mobile",
+      "edgeToEdgeEnabled": true
+    },
+    "plugins": [
+      "expo-secure-store",
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow Wecapp to scan booking passes at your caf\u00e9.",
+          "recordAudioAndroid": false
+        }
+      ]
+    ],
+    "web": {
+      "bundler": "metro"
+    }
+  }
+}

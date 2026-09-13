@@ -1,0 +1,58 @@
+{
+  "name": "wecapp",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "index.ts",
+  "scripts": {
+    "dev": "node --watch server/index.mjs",
+    "build": "vite build",
+    "start": "NODE_ENV=production node server/index.mjs",
+    "mobile": "expo start",
+    "ios": "expo start --ios",
+    "android": "expo start --android",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test tests/*.test.mjs",
+    "check": "npm run typecheck && npm test && npm run build",
+    "export:mobile": "expo export --platform ios --platform android --output-dir dist-native",
+    "test:browser": "node tests/browser.mjs"
+  },
+  "dependencies": {
+    "@react-native-async-storage/async-storage": "2.2.0",
+    "@supabase/supabase-js": "^2.110.9",
+    "dotenv": "^17.4.2",
+    "expo": "~54.0.36",
+    "expo-camera": "~17.0.10",
+    "expo-constants": "~18.0.13",
+    "expo-secure-store": "~15.0.8",
+    "expo-status-bar": "~3.0.9",
+    "express": "^5.2.1",
+    "lucide-react-native": "^1.27.0",
+    "postgres": "^3.4.9",
+    "qrcode": "^1.5.4",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-native": "0.81.5",
+    "react-native-safe-area-context": "~5.6.0",
+    "react-native-svg": "15.12.1",
+    "react-native-web": "^0.21.0",
+    "stripe": "^18.5.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.55.0",
+    "@types/qrcode": "^1.5.5",
+    "@types/react": "~19.1.10",
+    "@types/react-dom": "~19.1.0",
+    "@vitejs/plugin-react": "^4.7.0",
+    "supertest": "^7.2.2",
+    "typescript": "~5.9.2",
+    "vite": "^6.1.0"
+  },
+  "overrides": {
+    "postcss": "8.5.28",
+    "xcode": {
+      "uuid": "11.1.1"
+    }
+  }
+}

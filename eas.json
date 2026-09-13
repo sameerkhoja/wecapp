@@ -1,0 +1,1 @@
+{"cli":{"version":">= 12.0.0"},"build":{"preview":{"distribution":"internal","env":{"EXPO_PUBLIC_WECAPP_ENV":"production"}},"production":{"autoIncrement":true,"env":{"EXPO_PUBLIC_WECAPP_ENV":"production"}}},"submit":{"production":{}}}
