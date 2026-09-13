@@ -65,6 +65,7 @@ await page.getByRole("heading", { name: "Behind the counter." }).waitFor();
 await page.getByRole("button", { name: "Pause reservations" }).click();
 await page.getByRole("button", { name: "Resume reservations" }).waitFor();
 await page.getByRole("button", { name: "Resume reservations" }).click();
+await page.getByRole("button", { name: "Pause reservations" }).waitFor();
 await page.screenshot({ path: "docs/operator.png", fullPage: true });
 await page.getByRole("button", { name: "Jamie ↗" }).click();
 await page.getByRole("button", { name: "Switch demo role" }).click();

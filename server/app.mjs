@@ -749,9 +749,9 @@ export async function createApp(
     });
     const venues =
       req.user.role === "admin"
-        ? await db.prepare("SELECT * FROM venues").all()
+        ? await db.prepare("SELECT * FROM venues ORDER BY name, id").all()
         : await db
-            .prepare("SELECT * FROM venues WHERE owner_id=?")
+            .prepare("SELECT * FROM venues WHERE owner_id=? ORDER BY name, id")
             .all(req.user.id);
     const data = [];
     for (const v of venues) {
