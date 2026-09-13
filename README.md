@@ -80,7 +80,7 @@ npm run build
 npm start
 ```
 
-Deploy the Express application and its built `dist/` directory together on a Node host. It serves both the website and API. The supplied `eas.json` supports internal and production native builds; configure your own Expo project, developer accounts, signing, and API URL before using EAS. No website deployment, payment activation, or store submission was performed.
+Deploy the Express application and its built `dist/` directory together on a Node host. It serves both the website and API. The supplied `eas.json` supports internal and production native builds; configure your own Expo project, developer accounts, signing, and API URL before using EAS. Vercel deployment configuration is included. Payment activation and native store submission are separate release steps.
 
 ## Deliberate pilot choices and remaining launch work
 
@@ -106,3 +106,13 @@ This is a working pilot implementation, not a claim that every growth-stage item
 ### Dependency audit
 
 The build tools were audited on September 13, 2026. Compatible PostCSS and UUID fixes are pinned through npm overrides. Eight remaining high-severity audit entries trace to the same `image-size` denial-of-service advisories in Expo 54/Metro's development asset-processing chain. `npm audit` proposes an Expo major upgrade, which would depart from the requested baseline. No uploaded image parsing is exposed by this application's API. Treat an Expo upgrade and a clean dependency review as release work; do not expose the development bundler publicly.
+
+## Vercel deployment
+
+The public repository is https://github.com/sameerkhoja/wecapp.
+
+`api/index.mjs` initializes the API once per warm Vercel function. `vercel.json` serves the Vite build and routes `/api/*` to that function. The project uses Node 22 and a separate persistent PostgreSQL database. Secrets are managed through Vercel environment variables and are excluded from Git.
+
+The hosted pilot uses `WECAPP_DEMO=true`: all accounts and transactions are demonstrations shared between visitors. Do not enter personal data. This mode refuses to start when real authentication or payment services are configured. Disable it and configure production services before onboarding real customers.
+
+GitHub Actions runs the application checks on pushes and pull requests. To deploy manually after configuring the project, run `npx vercel --prod`.

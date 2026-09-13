@@ -616,7 +616,7 @@ function AppContent() {
           {config?.demo && (
             <View style={s.demo}>
               <T style={{ fontSize: 10, color: C.muted, letterSpacing: 1 }}>
-                LOCAL DEMO · ILLUSTRATIVE CAFÉS · NO REAL PAYMENTS
+                SHARED DEMO · SAMPLE DATA · NO REAL PAYMENTS
               </T>
             </View>
           )}
@@ -1872,7 +1872,7 @@ function AppContent() {
           </T>
           {config?.demo && (
             <View style={{ gap: 12 }}>
-              <Badge>LOCAL DEMO ACCOUNTS</Badge>
+              <Badge>DEMO ACCOUNTS</Badge><T style={{fontSize:12,color:C.muted,lineHeight:20}}>This is a shared demonstration. Use fictional details only; other demo visitors can view test bookings and support cases.</T>
               <Button disabled={busy} onPress={() => demoLogin("customer")}>
                 Explore as a customer
               </Button>

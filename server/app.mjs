@@ -35,12 +35,15 @@ const money = (n) => Math.round(n * 0.17);
 export async function createApp(
   db,
   {
-    demo = process.env.NODE_ENV !== "production",
+    demo = process.env.WECAPP_DEMO === "true" || process.env.NODE_ENV !== "production",
     stripe = process.env.STRIPE_SECRET_KEY
       ? new Stripe(process.env.STRIPE_SECRET_KEY)
       : null,
   } = {},
 ) {
+  if (demo && process.env.NODE_ENV === "production" && (stripe || process.env.SUPABASE_URL)) {
+    throw new Error("Hosted demo cannot use live authentication or payment services");
+  }
   await migrate(db);
   if (demo) await seed(db);
   const secret =
