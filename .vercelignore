@@ -6,3 +6,6 @@ data
 work
 docs
 .env*
+
+.agents/
+skills-lock.json

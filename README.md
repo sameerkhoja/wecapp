@@ -2,6 +2,8 @@
 
 A React Native app and responsive website for reserving productive work sessions at independent cafés. Built from the supplied café marketplace proposal, renamed from CupDesk to **Wecapp**, with the local Luna baby-care repository as the architectural baseline.
 
+**Live pilot:** https://wecapp.vercel.app · **Public source:** https://github.com/sameerkhoja/wecapp
+
 ## Try it
 
 Requires Node 22.21+ and npm.
@@ -58,7 +60,7 @@ Automated API coverage includes last-seat contention, idempotent holds, expirati
 
 Browser verification exercises discovery, saved cafés, date changes, checkout, the QR pass, cancellation, café pause/resume, the admin view, and a 390px phone layout. Screenshots are in `docs/`.
 
-Native bundle export verifies compilation; it is not an App Store build or a substitute for physical-device tests of the camera, secure storage, accessibility, and payment return flow. PostgreSQL and live Stripe/Connect credentials have not been exercised in this local environment.
+Native bundle export verifies compilation; it is not an App Store build or a substitute for physical-device tests of the camera, secure storage, accessibility, and payment return flow. The deployed Neon PostgreSQL database has passed catalog, login, reservation, demo checkout, and refund verification. Live Stripe/Connect credentials have not been exercised.
 
 ## Configure a real environment
 
@@ -73,7 +75,7 @@ Copy `.env.example` to `.env` and provide Wecapp-specific values. Do not reuse L
 - `EXPO_PUBLIC_WECAPP_API_URL`: the same HTTPS API origin when building the native release.
 - `EXPO_PUBLIC_WECAPP_ENV=production`: rejects insecure native API URLs.
 
-Production starts with no sample users or cafés. Sign in as an admin, have a café owner submit an application, approve it, and have the owner sign in again to access their dashboard. Configure genuine café photos, amenities, capacity, price, drink credit, and payout onboarding before accepting live bookings.
+With hosted demo mode disabled, a new production database starts with no sample users or cafés. Sign in as an admin, have a café owner submit an application, approve it, and have the owner sign in again to access their dashboard. Configure genuine café photos, amenities, capacity, price, drink credit, and payout onboarding before accepting live bookings.
 
 ```sh
 npm run build

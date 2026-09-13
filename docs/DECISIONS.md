@@ -21,6 +21,6 @@ The baseline's Expo/React/Express approach was retained instead of introducing N
 
 ## Verification boundary
 
-The automated suite exercises SQLite and a signature-validating mock payment provider. The PostgreSQL adapter is implemented with conditional capacity updates and row locks, but no live PostgreSQL database was available for load/concurrency validation. Native iOS/Android bundles compile; no signing, native install, production payment, email delivery, or deployment was performed.
+The automated suite exercises SQLite and a signature-validating mock payment provider. The PostgreSQL adapter is implemented with conditional capacity updates and row locks, and the deployed Neon PostgreSQL database passed catalog, login, reservation, demo checkout, and refund verification. Production-scale load testing remains outstanding. Native iOS/Android bundles compile; no signing, native install, production payment, email delivery, was performed. The website and API are deployed at https://wecapp.vercel.app in shared demo mode.
 
 See the README for exact remaining release work. The application's demo must not be presented as a marketplace of actual operating cafés.

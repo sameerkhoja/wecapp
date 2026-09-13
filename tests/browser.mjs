@@ -4,7 +4,7 @@ const browser = await chromium.launch({ channel: "chrome", headless: true });
 const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
 const errors = [];
 page.on("pageerror", (e) => errors.push(e.message));
-await page.goto("http://localhost:5174");
+await page.goto((process.env.BASE_URL || "http://localhost:5174"));
 await page.getByRole("button", { name: "Sign in ↗" }).click();
 await Promise.all([
   page.waitForResponse(
@@ -75,7 +75,7 @@ const phone = await browser.newPage({
   deviceScaleFactor: 2,
 });
 phone.on("pageerror", (e) => errors.push(e.message));
-await phone.goto("http://localhost:5174");
+await phone.goto((process.env.BASE_URL || "http://localhost:5174"));
 await phone
   .getByRole("button", { name: "View Ritual & Room", exact: true })
   .waitFor();
